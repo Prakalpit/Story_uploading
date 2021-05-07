@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Uploading Stories</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<style>
+    h2{
+        background-color: bisque;
+        font-family: 'Baskerville';
+        padding-left: 12px;
+        padding-right: 12px;
+        text-align: center;
+    }
+    body{
+        padding-right: 12px;
+        padding-left: 12px;
+
+    }
+</style>
+<body>
+
+<h2>Read Stories</h2>
+{% if stories %}
+    {% for data in stories %}
+     <p>   {{ data.id }}. <a href="{{ data.get_absolute_url }}">{{ data.title }}</a></p>
+    {% endfor %}
+    <a href="{% url 'form' %}">
+    <h3>Upload More</h3></a>
+    {% else %}
+    <a href="{% url 'form' %}">
+    <h3>Upload one</h3></a>
+{% endif %}
+</body>
+
+</html>
